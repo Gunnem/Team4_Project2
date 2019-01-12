@@ -1,8 +1,8 @@
 {
   "development": {
     "username": "root",
-    "password": null,
-    "database": "exampledb",
+    "password": "flute0207",
+    "database": "login_db",
     "host": "localhost",
     "dialect": "mysql"
   },
