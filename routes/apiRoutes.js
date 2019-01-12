@@ -1,7 +1,32 @@
 var db = require("../models");
 
+var unirest = require("unirest");
+
+unirest
+  .get(
+    "https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/search?number=9&offset=0&query=tuna"
+  )
+  .header(
+    "X-RapidAPI-Key",
+    "7QfEL0WGpbmshILA0RWQxq6VJZG8p1kt7PNjsnb3yQA9eSgW8O"
+  )
+  .end(function(result) {
+    console.log(result.status, result.headers, result.body);
+  });
+
+//Finds ingredients based on Recipe index#
+unirest
+  .get(
+    "https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/7539/information"
+  )
+  .header(
+    "X-RapidAPI-Key",
+    "7QfEL0WGpbmshILA0RWQxq6VJZG8p1kt7PNjsnb3yQA9eSgW8O"
+  )
+  .end(function(result) {
+    console.log(result.status, result.headers, result.body);
+  });
 module.exports = function(app) {
-  // Get all examples
   app.get("/api/examples", function(req, res) {
     db.Example.findAll({}).then(function(dbExamples) {
       res.json(dbExamples);
@@ -21,4 +46,4 @@ module.exports = function(app) {
       res.json(dbExample);
     });
   });
-};
+}
