@@ -2,6 +2,7 @@ var db = require("../models");
 
 var unirest = require("unirest");
 
+//API CALL TO GET RECIPES
 // unirest
 //   .get(
 //     "https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/search?number=6&offset=0&query=tuna"
@@ -16,7 +17,6 @@ var unirest = require("unirest");
 //   });
 
 //Finds ingredients based on Recipe index#
-
 unirest
   .get(
     "https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/7539/information"
