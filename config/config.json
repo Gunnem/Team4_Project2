@@ -1,7 +1,7 @@
 {
   "development": {
     "username": "root",
-    "password": "Thibaudcat9",
+    "password": "flute0207",
     "database": "OneIngredient_db",
     "host": "localhost",
     "dialect": "mysql"
