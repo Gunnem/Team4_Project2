@@ -2,10 +2,11 @@ var db = require("../models");
 
 var unirest = require("unirest");
 
-var input = "tuna";
+var input = "orange";
 
-var recipeNumber = 12023;
+var recipeNumber = 227961;
 
+module.exports = function(app) {
 //API CALL TO GET RECIPES
 unirest
   .get(
@@ -20,9 +21,15 @@ unirest
     console.log("Recipe Name: " + result.body.results[0].title);
     console.log("id: " + result.body.results[0].id);
     console.log("Image: " + result.body.results[0].image);
+    db.Recipe.create({
+      recipeName: result.body.results[0].title,
+      photo: result.body.results[0].image,
+      recipeNumber: result.body.results[0].id
+    })
+    .then(function(result) {
+      console.log(result);
+    });
   });
-
-
 
 //Finds ingredients based on Recipe index#
 unirest
@@ -42,25 +49,32 @@ unirest
     // console.log(result.body);
     for (i = 0; i < result.body.extendedIngredients.length; i++) {
       console.log(result.body.extendedIngredients[i].name);
+
+      db.ShoppingList.create({
+        ingredient: result.body.extendedIngredients[i].name
+      })
+      .then(function(result) {
+        console.log(result);
+      });
+
+
     }
   });
 
+  // Create a new example
+  // app.post("/api/recipes", function(req, res) {
+  //
+  // });
 
 
 
-module.exports = function(app) {
   app.get("/api/examples", function(req, res) {
     db.Example.findAll({}).then(function(dbExamples) {
       res.json(dbExamples);
     });
   });
 
-  // Create a new example
-  app.post("/api/examples", function(req, res) {
-    db.Example.create(req.body).then(function(dbExample) {
-      res.json(dbExample);
-    });
-  });
+
 
   // Delete an example by id
   app.delete("/api/examples/:id", function(req, res) {
