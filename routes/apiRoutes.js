@@ -2,9 +2,9 @@ var db = require("../models");
 
 var unirest = require("unirest");
 
-var input = "orange";
+var input = "chicken";
 
-var recipeNumber = 227961;
+var recipeNumber = 296119;
 
 module.exports = function(app) {
 //API CALL TO GET RECIPES
@@ -18,17 +18,21 @@ unirest
   )
   .end(function(result) {
     console.log("*****************RECIPE CALL*****************");
-    console.log("Recipe Name: " + result.body.results[0].title);
-    console.log("id: " + result.body.results[0].id);
-    console.log("Image: " + result.body.results[0].image);
-    db.Recipe.create({
-      recipeName: result.body.results[0].title,
-      photo: result.body.results[0].image,
-      recipeNumber: result.body.results[0].id
-    })
-    .then(function(result) {
-      console.log(result);
-    });
+    for(i=0; i<result.body.results.length; i++){
+      console.log("Recipe Name: " + result.body.results[i].title);
+      db.Recipe.create({
+        recipeName: result.body.results[i].title,
+        photo: result.body.results[i].image,
+        recipeNumber: result.body.results[i].id
+      })
+      .then(function() {
+
+      });
+    }
+
+    // console.log("id: " + result.body.results[0].id);
+    // console.log("Image: " + result.body.results[0].image);
+
   });
 
 //Finds ingredients based on Recipe index#
@@ -53,8 +57,8 @@ unirest
       db.ShoppingList.create({
         ingredient: result.body.extendedIngredients[i].name
       })
-      .then(function(result) {
-        console.log(result);
+      .then(function() {
+
       });
 
 
