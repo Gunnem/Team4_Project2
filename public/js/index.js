@@ -1,8 +1,31 @@
 // Get references to page elements
+var $inputName = $("#inputName");
+var $submitNamebtn = $("#submitName");
 var $exampleText = $("#example-text");
 var $exampleDescription = $("#example-description");
 var $submitBtn = $("#submit");
 var $exampleList = $("#example-list");
+
+// handleNameSubmit is called whenever we submit a new ingredient name.
+// Spoonacular API call and display results
+var handleNameSubmit = function(event) {
+  event.preventDefault();
+
+  var ingredient = {
+    text: $inputName.val().trim(),
+  };
+
+  if (!(ingredient.text)) {
+    alert("Please enter the star of the show!");
+    return;
+  }
+
+  API.saveExample(example).then(function() {
+    refreshExamples();
+  });
+
+  $inputName.val("");
+};
 
 // The API object contains methods for each kind of request we'll make
 var API = {
