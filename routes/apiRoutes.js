@@ -2,11 +2,10 @@ var db = require("../models");
 
 var unirest = require("unirest");
 
-var input = "chicken";
+var input = "tuna";
 
-var recipeNumber = 296119;
+var recipeNumber = 12023;
 
-module.exports = function(app) {
 //API CALL TO GET RECIPES
 unirest
   .get(
@@ -18,22 +17,12 @@ unirest
   )
   .end(function(result) {
     console.log("*****************RECIPE CALL*****************");
-    for(i=0; i<result.body.results.length; i++){
-      console.log("Recipe Name: " + result.body.results[i].title);
-      db.Recipe.create({
-        recipeName: result.body.results[i].title,
-        photo: result.body.results[i].image,
-        recipeNumber: result.body.results[i].id
-      })
-      .then(function() {
-
-      });
-    }
-
-    // console.log("id: " + result.body.results[0].id);
-    // console.log("Image: " + result.body.results[0].image);
-
+    console.log("Recipe Name: " + result.body.results[0].title);
+    console.log("id: " + result.body.results[0].id);
+    console.log("Image: " + result.body.results[0].image);
   });
+
+
 
 //Finds ingredients based on Recipe index#
 unirest
@@ -53,32 +42,25 @@ unirest
     // console.log(result.body);
     for (i = 0; i < result.body.extendedIngredients.length; i++) {
       console.log(result.body.extendedIngredients[i].name);
-
-      db.ShoppingList.create({
-        ingredient: result.body.extendedIngredients[i].name
-      })
-      .then(function() {
-
-      });
-
-
     }
   });
 
-  // Create a new example
-  // app.post("/api/recipes", function(req, res) {
-  //
-  // });
 
 
 
+module.exports = function(app) {
   app.get("/api/examples", function(req, res) {
     db.Example.findAll({}).then(function(dbExamples) {
       res.json(dbExamples);
     });
   });
 
-
+  // Create a new example
+  app.post("/api/examples", function(req, res) {
+    db.Example.create(req.body).then(function(dbExample) {
+      res.json(dbExample);
+    });
+  });
 
   // Delete an example by id
   app.delete("/api/examples/:id", function(req, res) {
