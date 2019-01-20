@@ -1,6 +1,6 @@
 // Get references to page elements
 var $inputName = $("#inputName");
-var $submitNamebtn = $("#submitName");
+var $submitNamebtn = $("#submitNamebtn");
 var $exampleText = $("#example-text");
 var $exampleDescription = $("#example-description");
 var $submitBtn = $("#submit");
