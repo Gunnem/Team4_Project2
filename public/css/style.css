@@ -576,6 +576,17 @@ textarea.form-control {
   color: #000;
   font-weight: 900;
 }
+.saveButton{
+  text-transform: uppercase;
+  font-size: 12px !important;
+  letter-spacing: .15em;
+  text-decoration: none !important;
+  -webkit-transition: .3s all ease;
+  -o-transition: .3s all ease;
+  transition: .3s all ease;
+  color: #000;
+  font-weight: 900; 
+}
 
 .btn-link span {
   position: relative;
