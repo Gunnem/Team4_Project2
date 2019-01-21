@@ -25,11 +25,11 @@ $("#submitNamebtn").on("click", function(event) {
         $("#image"+i).css("background-image", "url("+response[i].image+")");
         // give button an attr that is the Id number for spoonacular.
       }
-      
-    }); 
+
+    });
     // This line grabs the input from the textbox
 
-    
-   
-    
+
+
+
 });
