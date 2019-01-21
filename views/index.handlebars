@@ -147,7 +147,7 @@
                 <h2 class="heading mb-3">Ingredient List</h2>
                 <p class="sub-heading mb-5">Check off items you already have.</p>
                 <!-- Elaine added -->
-                <p>{{ingredients}}</p>
+                {{!-- <p>{{ingredients}}</p> --}}
 
               </div>
             </div>
@@ -157,14 +157,15 @@
                 <div class="tab-content" id="pills-tabContent">
                   <div class="tab-pane fade show active" id="pills-breakfast" role="tabpanel" aria-labelledby="pills-breakfast-tab">
                     <div class="d-block d-md-flex menu-food-item">
-                    <ul id="recipe-list" class="list-group">
-                        {{#each recipes}}
-                      <li data-id="{{this.id}}" class="list-group-recipe">
-                        <h3>
-                         <a href="recipe/{{this.id}}">{{this.text}}</a>
-                       </h3>
+                    <ul id="example-list" class="list-group">
+                      <h3>
+                        {{#each ingredients}}
+                      <li data-id="{{this.id}}" class="list-group-item">
+                         <a href="example/{{this.id}}">{{this.ingredient}}</a>
+                         <button class="btn btn-danger float-right delete">ｘ</button>
                      </li>
                      {{/each}}
+                     </h3>
                    </ul>
                   </div>
               </div>
@@ -248,3 +249,4 @@
 
     <script src="js/main.js"></script>
     <script src="js/request.js"></script>
+    <script src="/js/index.js"></script>
