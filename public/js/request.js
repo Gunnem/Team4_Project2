@@ -24,26 +24,25 @@ $("#submitNamebtn").on("click", function(event) {
         $("#image"+i).css("background-image", "url("+response[i].image+")");
 
         $("#recipe"+i+" .saveRecipebtn").attr("data-recipeID",response[i].id);
-        $("#recipe"+i+" .btn-link").attr("data-sourceUrl",response[i].sourceUrl);
+        $("#recipe"+i+" .btn-link").attr("data-recipeID",response[i].id);
       }
     });
 });
 // end of ingredient call
 
-var sourceUrl;
+var recipeID;
 
 $(".btn-link").on("click", function(event) {
     
-    // event.preventDefault();
+    event.preventDefault();
     
-    sourceUrl = $(this).attr("data-sourceUrl") ;
-    console.log(sourceUrl);
+    recipeID = $(this).attr("data-recipeID") ;
+    console.log(recipeID);
 
-    // recipeID = $("#saveRecipebtn" + i);
+    var queryURL = 'https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/' + recipeID + '/information'
 
-    var queryURL = 'https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/' + sourceUrl + '/information'
-
-      console.log(queryURL);
+    console.log(ingredient);
+    console.log(queryURL);
     $.ajax({
       url:queryURL,
       type:"GET",
@@ -55,11 +54,10 @@ $(".btn-link").on("click", function(event) {
       console.log(response);
       
       // console.log(response[0].title);
-
+      // $("#recipe"+i+" .btn-link").attr("href",response[i].sourceUrl);
+      window.open(response.sourceUrl, '_blank');
     });    
 });
-
-
 
 
 
@@ -73,8 +71,6 @@ $(".saveRecipebtn").on("click", function(event) {
     
     recipeID = $(this).attr("data-recipeID") ;
     console.log(recipeID);
-
-    // recipeID = $("#saveRecipebtn" + i);
 
     var queryURL = 'https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/' + recipeID + '/information'
 
