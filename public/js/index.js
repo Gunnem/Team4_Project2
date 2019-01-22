@@ -12,10 +12,10 @@ var handleNameSubmit = function(event) {
   event.preventDefault();
 
   var ingredient = {
-    text: $inputName.val().trim(),
+    text: $inputName.val().trim()
   };
 
-  if (!(ingredient.text)) {
+  if (!ingredient.text) {
     alert("Please enter the star of the show!");
     return;
   }
@@ -69,7 +69,7 @@ var refreshExamples = function() {
         .append($a);
 
       var $button = $("<button>")
-        .addClass("btn btn-danger float-right delete")
+        .addClass("btn btn-outline-info btn-sm float-right delete")
         .text("ｘ");
 
       $li.append($button);

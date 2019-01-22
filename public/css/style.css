@@ -11,8 +11,14 @@ body {
   color: gray;
 }
 
-p, ul, ol {
+p, ol {
   margin-bottom: 30px;
+}
+
+ul {
+  margin-bottom: 30px;
+  width: 70%;
+  margin: auto;
 }
 
 a {
