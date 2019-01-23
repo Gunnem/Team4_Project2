@@ -1,7 +1,7 @@
 {
   "development": {
     "username": "root",
-    "password": null,
+    "password": "mysq1234",
     "database": "OneIngredient_db",
     "host": "localhost",
     "dialect": "mysql"

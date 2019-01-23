@@ -301,6 +301,14 @@ textarea.form-control {
   border: 2px solid transparent;
 }
 
+.list-group{
+  width: 710px;
+}
+.list-group-item{
+  margin-bottom: 3px;
+  background-color: #a1afaf61;
+}
+
 .btn-circle {
   width: 30px;
   height: 30px;
