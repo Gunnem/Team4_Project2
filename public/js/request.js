@@ -1,6 +1,17 @@
 var ingredient;
 
+//User can hit "enter" key to submit
+$("#inputName").keypress(function(e){
+  if(e.which === 13){
+    recipeCall();
+  }
+});
+//User can press "Enter 1 Ingredient" to submit
 $("#submitNamebtn").on("click", function(event) {
+recipeCall();
+});
+
+function recipeCall() {
   event.preventDefault();
 
   ingredient = $("#inputName")
@@ -21,6 +32,7 @@ $("#submitNamebtn").on("click", function(event) {
       "X-RapidAPI-Key": "fT0kOsMhvlmshAdsALJxAu0NwGnyp1r07itjsn5HzfUTCXBPZS"
     }
   }).then(function(response) {
+    $("#secondSection").get(0).scrollIntoView();
     console.log(JSON.stringify(response));
     // console.log(response[0].title);
     for (var i = 0; i < response.length; i++) {
@@ -34,7 +46,7 @@ $("#submitNamebtn").on("click", function(event) {
       $("#recipe" + i + " .btn-link").attr("data-recipeID", response[i].id);
     }
   });
-});
+};
 // end of ingredient call
 
 var recipeID;
@@ -96,8 +108,9 @@ $(".saveRecipebtn").on("click", function(event) {
   })
     // Loop to extract each ingredient from JSON response obj and post it to the database
     .then(function(response) {
+          $("#listSection").get(0).scrollIntoView();
       for (i = 0; i < response.extendedIngredients.length; i++) {
-        var item = response.extendedIngredients[i].name;
+        var item = response.extendedIngredients[i].original;
         console.log("Ingredients: " + item);
 
         var shoppingListItem = {
