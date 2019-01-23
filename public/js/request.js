@@ -1,12 +1,28 @@
 var ingredient;
 
+//User can hit "enter" key to submit
+$("#inputName").keypress(function(e){
+  if(e.which === 13){
+    recipeCall();
+  }
+});
+//User can press "Enter 1 Ingredient" to submit
 $("#submitNamebtn").on("click", function(event) {
+recipeCall();
+});
+
+//Calls API
+function recipeCall() {
   event.preventDefault();
 
-  ingredient = $("#inputName")
+//Allows user to enter up to 2 words
+  inputName = $("#inputName")
     .val()
     .trim();
+var ingredientPre = inputName.split(" ");
+var ingredient = ingredientPre[0].concat("+").concat(ingredientPre[1]);
 
+//Calls API
   var queryURL =
     "https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/findByIngredients?number=6&ranking=1&ingredients=" +
     ingredient;
@@ -21,6 +37,7 @@ $("#submitNamebtn").on("click", function(event) {
       "X-RapidAPI-Key": "fT0kOsMhvlmshAdsALJxAu0NwGnyp1r07itjsn5HzfUTCXBPZS"
     }
   }).then(function(response) {
+    $("#secondSection").get(0).scrollIntoView();
     console.log(JSON.stringify(response));
     // console.log(response[0].title);
     for (var i = 0; i < response.length; i++) {
@@ -34,11 +51,11 @@ $("#submitNamebtn").on("click", function(event) {
       $("#recipe" + i + " .btn-link").attr("data-recipeID", response[i].id);
     }
   });
-});
+};
 // end of ingredient call
 
+//Takes user to website of the recipe
 var recipeID;
-
 $(".btn-link").on("click", function(event) {
   event.preventDefault();
 
@@ -60,10 +77,6 @@ $(".btn-link").on("click", function(event) {
       "X-RapidAPI-Key": "fT0kOsMhvlmshAdsALJxAu0NwGnyp1r07itjsn5HzfUTCXBPZS"
     }
   }).then(function(response) {
-    console.log(response);
-
-    // console.log(response[0].title);
-    // $("#recipe"+i+" .btn-link").attr("href",response[i].sourceUrl);
     window.open(response.sourceUrl, "_blank");
   });
 });
@@ -96,8 +109,10 @@ $(".saveRecipebtn").on("click", function(event) {
   })
     // Loop to extract each ingredient from JSON response obj and post it to the database
     .then(function(response) {
+      //scroll down to where recipes are shown
+      $("#listSection").get(0).scrollIntoView();
       for (i = 0; i < response.extendedIngredients.length; i++) {
-        var item = response.extendedIngredients[i].name;
+        var item = response.extendedIngredients[i].original;
         console.log("Ingredients: " + item);
 
         var shoppingListItem = {

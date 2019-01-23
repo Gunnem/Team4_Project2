@@ -1,7 +1,7 @@
 # :ramen: __1.ng__ :bento:
 
 ## Live Preview
- - [1.ng](insertHEROKU)
+ - [1.ng](https://morning-refuge-85247.herokuapp.com/)
 
 
 ## Author(s)
@@ -12,7 +12,9 @@
 
 
 ## Description
-  1.ng confronts the issue of buying an ingredient in bulk and having to eat the same recipe over and over again. With 1.ng the user can enter the ingredient they are planning to buy in bulk and then select any number of 6 presented recipes. A shopping list is automatically generated below when the user selects the recipe.
+  1.ng (play on the phrase "1 Ingredient") confronts the issue of buying an ingredient in bulk and having to eat the same recipe over and over again. With 1.ng the user can enter the ingredient they are planning to buy in bulk and then select any number of 6 presented recipes. A shopping list is automatically generated below when the user selects the recipe.
+
+  For this project we utilized the API Spoonacular to make our recipes and ingredient calls on the front end and handlebars to dynamically display the results. Bootstrap was used extensively for the front-end. On click of "save recipe", the ingredients are sent to a MySql database where the user is able to delete not-needed ingredients.
 
 ## Technologies Used
 
@@ -26,7 +28,7 @@
   - Sequelize
 
   ### Database
-  - Mysql
+  - MySql
 
   ### API
   - Spoonacular
@@ -38,5 +40,5 @@
 
 
 ---
-## License & Copyright
+### License & Copyright
 © Matthew K, Shahrooz K, Patrick R, Elaine C; UCB Coding Bootcamp 2019
