@@ -601,7 +601,7 @@ textarea.form-control {
   -o-transition: .3s all ease;
   transition: .3s all ease;
   color: #000;
-  font-weight: 900; 
+  font-weight: 900;
 }
 
 .btn-link span {
@@ -1777,6 +1777,12 @@ textarea.form-control {
   -webkit-animation: loader-dash 1.5s ease-in-out infinite;
   animation: loader-dash 1.5s ease-in-out infinite;
   stroke-linecap: round;
+}
+
+#favicon{
+  height: 40px;
+  width: 40px;
+  
 }
 
 @-webkit-keyframes loader-rotate {
