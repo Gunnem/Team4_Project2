@@ -128,7 +128,7 @@
                     <p class="mb-5">                                                                                             </p>
                     <p><a href="#" class="btn-link">See Recipe <span class="ion-android-arrow-forward"></span></a></p>
                     <label class="saveButton" >Save the recipe
-                      <input type="button" class="saveRecipebtn">
+                      <input type="checkbox" class="saveRecipebtn">
                       <span class="checkmark" id="saveRecipebtn"></span>
                     </label>
                   </div>
@@ -170,7 +170,7 @@
                         {{#each ingredients}}
                       <li data-id="{{this.id}}" class="list-group-item">
                          <a href="example/{{this.id}}">{{this.ingredient}}</a>
-                         <button class="btn btn-danger btn-circle float-right delete">ｘ</button>
+                         <button class="btn btn-danger btn-circle float-right delete"><i class="fa fa-times"></i></button>
                      </li>
                      {{/each}}
                      </h3>
