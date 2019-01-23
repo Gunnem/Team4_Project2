@@ -18,7 +18,7 @@ $("#submitNamebtn").on("click", function(event) {
     type: "GET",
     crossDomain: true,
     headers: {
-      "X-RapidAPI-Key": "iO1JP0bW8vmshiir9bxd1hPu4sv4p1KhdBHjsnWR4JOwXs3gBt"
+      "X-RapidAPI-Key": "fT0kOsMhvlmshAdsALJxAu0NwGnyp1r07itjsn5HzfUTCXBPZS"
     }
   }).then(function(response) {
     console.log(JSON.stringify(response));
@@ -57,7 +57,7 @@ $(".btn-link").on("click", function(event) {
     type: "GET",
     crossDomain: true,
     headers: {
-      "X-RapidAPI-Key": "iO1JP0bW8vmshiir9bxd1hPu4sv4p1KhdBHjsnWR4JOwXs3gBt"
+      "X-RapidAPI-Key": "fT0kOsMhvlmshAdsALJxAu0NwGnyp1r07itjsn5HzfUTCXBPZS"
     }
   }).then(function(response) {
     console.log(response);
@@ -91,7 +91,7 @@ $(".saveRecipebtn").on("click", function(event) {
     type: "GET",
     crossDomain: true,
     headers: {
-      "X-RapidAPI-Key": "iO1JP0bW8vmshiir9bxd1hPu4sv4p1KhdBHjsnWR4JOwXs3gBt"
+      "X-RapidAPI-Key": "fT0kOsMhvlmshAdsALJxAu0NwGnyp1r07itjsn5HzfUTCXBPZS"
     }
   })
     // Loop to extract each ingredient from JSON response obj and post it to the database
@@ -101,7 +101,7 @@ $(".saveRecipebtn").on("click", function(event) {
         console.log("Ingredients: " + item);
 
         var shoppingListItem = {
-          id: i + 1,
+          // id: i + 1,
           ingredient: item
         };
         $.ajax({
