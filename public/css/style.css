@@ -301,6 +301,16 @@ textarea.form-control {
   border: 2px solid transparent;
 }
 
+.btn-circle {
+  width: 30px;
+  height: 30px;
+  padding: 6px 0px;
+  border-radius: 15px;
+  text-align: center;
+  font-size: 12px;
+  line-height: 1.42857;
+}
+
 .bg-image, .half .image, .image-bg-fullwidth {
   background-size: cover;
   background-position: center center;
