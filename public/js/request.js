@@ -15,13 +15,14 @@ recipeCall();
 function recipeCall() {
   event.preventDefault();
 
+//Allows user to enter up to 2 words
   inputName = $("#inputName")
     .val()
     .trim();
 var ingredientPre = inputName.split(" ");
 var ingredient = ingredientPre[0].concat("+").concat(ingredientPre[1]);
 
-
+//Calls API
   var queryURL =
     "https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/findByIngredients?number=6&ranking=1&ingredients=" +
     ingredient;
