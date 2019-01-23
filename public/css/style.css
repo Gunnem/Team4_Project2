@@ -307,6 +307,7 @@ textarea.form-control {
 .list-group-item{
   margin-bottom: 3px;
   background-color: #a1afaf61;
+  border: 1px solid black;
 }
 
 .btn-circle {
