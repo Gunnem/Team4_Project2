@@ -133,12 +133,13 @@ $(".saveRecipebtn").on("click", function(event) {
             .attr("href", "/example/" + example.id);
           var $li = $("<li>")
             .attr({
-              class: "list-group-item",
+              // class: "list-group-item",
               "data-id": shoppingListItem.id
             })
+            .addClass("list-group-item")
             .append($a);
           var $button = $("<button>")
-            .addClass("btn btn-outline-info btn-sm float-right delete")
+            .addClass("btn btn-danger btn-circle float-right delete")
             .text("ｘ");
 
           $li.append($button);
